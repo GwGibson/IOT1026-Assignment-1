@@ -9,7 +9,8 @@
         /// <returns>A deep copy of the original array</returns>
         public static int[] ReplicateArray(int[] original)
         {
-            throw new NotImplementedException();
+            int[] result =original;
+            return original;
         }
 
         /// <summary>
@@ -19,7 +20,27 @@
         /// <returns>The user input as an integer</returns>
         public static int AskForNumber(string text)
         {
-            throw new NotImplementedException();
+            {
+    while (true) // Loop until a valid input is provided
+    {
+        Console.Write(text);
+
+        try
+        {
+            string userInput = Console.ReadLine();
+            int number = Convert.ToInt32(userInput);
+            return number;
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Invalid input. Please enter a valid number.");
+        }
+        catch (OverflowException)
+        {
+            Console.WriteLine("The entered number is too large or too small.");
+        }
+    }
+}
         }
 
         /// <summary>
@@ -32,7 +53,12 @@
         /// <returns>The user input as an integer</returns>
         public static int AskForNumberInRange(string text, int min, int max)
         {
-            throw new NotImplementedException();
+            int userInput= AskForNumber(text);
+            while (userInput< min || userInput> max)
+            {
+                userInput=AskForNumber("Your previous input is not valid , please try again");
+            }
+            return userInput;
         }
     }
 
@@ -40,6 +66,7 @@
     {
         static void Main()
         {
+            ArrayReplicator.AskForNumberInRange("Test:",1,10);
             /*
             const int Min = 0;
             const int Max = 10;
