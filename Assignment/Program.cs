@@ -9,8 +9,14 @@
         /// <returns>A deep copy of the original array</returns>
         public static int[] ReplicateArray(int[] original)
         {
-            int[] result =original;
-            return original;
+             int size = original.Length;
+            int[] copyArray = new int[size];
+            // LINQ -> map
+            for (int i = 0; i < size; ++i)
+            {
+                copyArray[i] = original[i];
+            }
+            return copyArray;
         }
 
         /// <summary>
@@ -66,8 +72,6 @@
     {
         static void Main()
         {
-            ArrayReplicator.AskForNumberInRange("Test:",1,10);
-            /*
             const int Min = 0;
             const int Max = 10;
             const int PrintOffset = 4;
@@ -85,7 +89,6 @@
             // Verify original and replicated array are the same
             for (int index = 0; index < size; ++index)
                 Console.WriteLine($"Original {original[index],-PrintOffset}  {copy[index],4} Copy");
-            */
         }
     }
 }
