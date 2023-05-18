@@ -19,7 +19,27 @@
         /// <returns>The user input as an integer</returns>
         public static int AskForNumber(string text)
         {
-            throw new NotImplementedException();
+            {
+    while (true) // Loop until a valid input is provided
+    {
+        Console.Write(text);
+
+        try
+        {
+            string userInput =Console.ReadLine();
+            int number = Convert.ToInt32(userInput);
+            return number;
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Invalid input. Please enter a valid number.");
+        }
+        catch (OverflowException)
+        {
+            Console.WriteLine("The entered number is too large or too small.");
+        }
+    }
+            }
         }
 
         /// <summary>
